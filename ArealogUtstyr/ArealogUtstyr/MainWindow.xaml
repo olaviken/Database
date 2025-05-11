@@ -1,0 +1,86 @@
+﻿<Window x:Class="ArealogUtstyr.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArealogUtstyr"
+        mc:Ignorable="d"
+        Title="Areal og utstyrsoversikt INB" Height="1080" Width="1920">
+    <TabControl>
+        <TabItem Name="TabTest" Header="Test Fane">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextAlignment="Center" Text="Test Inputdata"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" TextAlignment="Center" Text="Test outputdata"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="5" TextAlignment="Center" Margin="5,5,5,5" Text="SQL database bygninger"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="6" TextAlignment="Center" Margin="5,5,5,5" Text="SQL database kategorier"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="7" TextAlignment="Center" Margin="5,5,5,5" Text="SQL database SLA Leverandører"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,5,5,5" Text="IDSLA:"></TextBlock>
+                <TextBox x:Name="InnIDSLA" Grid.Row="2" Grid.Column="2" Margin="5,5,5,5" Width="100"/>
+                <TextBlock Grid.Row="2" Grid.Column="3" Margin="0,5,5,5" Text="SLALeverandør:"></TextBlock>
+                <TextBox x:Name="InnSLaLeverandoer" Grid.Row="2" Grid.Column="4" Margin="5,5,5,5" Width="100"/>
+                <ListView x:Name="UtListeBygninger" Grid.Row="2" Grid.Column="5" Grid.RowSpan="3" Grid.ColumnSpan="1" Margin="5,5,5,5" Width="150">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" Width="20" DisplayMemberBinding="{Binding IDBygning}"></GridViewColumn>
+                            <GridViewColumn Header="Bygningnavn" Width="120" DisplayMemberBinding="{Binding BygningNavn}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="UtListeKategori" Grid.Row="2" Grid.Column="6" Grid.RowSpan="3" Grid.ColumnSpan="1" Margin="5,5,5,5" Width="150">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="ID" Width="20" DisplayMemberBinding="{Binding IDKategori}"></GridViewColumn>
+                            <GridViewColumn Header="Kategori" Width="120" DisplayMemberBinding="{Binding Kategori}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <ListView x:Name="UtListeSLALeverandoer" Grid.Row="2" Grid.Column="7" Grid.RowSpan="3" Grid.ColumnSpan="1" Margin="5,5,5,5" Width="420">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="IDSLA" Width="40" DisplayMemberBinding="{Binding IDSLA}"></GridViewColumn>
+                            <GridViewColumn Header="SLA Leverandør" Width="120" DisplayMemberBinding="{Binding SLALeverandoerNavn}"></GridViewColumn>
+                            <GridViewColumn Header="Kontaktperson" Width="120" DisplayMemberBinding="{Binding Kontaktperson}"></GridViewColumn>
+                            <GridViewColumn Header="E-post" Width="120" DisplayMemberBinding="{Binding Epost}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <TextBlock Grid.Row="3" Grid.Column="1" Margin="0,5,5,5" Text="Kontaktperson:"></TextBlock>
+                <TextBox x:Name="InnKontaktperson" Grid.Row="3" Grid.Column="2" Margin="5,5,5,5" Width="100"/>
+                <TextBlock Grid.Row="3" Grid.Column="3" Margin="0,5,5,5" Text="E-post:"></TextBlock>
+                <TextBox x:Name="InnEpost" Grid.Row="3" Grid.Column="4" Margin="5,5,5,5" Width="100"/>
+                
+                <Button x:Name="TestLagreButton" Content="Test av lagre" Margin="0,5,5,5" Grid.Row="4" Grid.Column="1" Click="TestLagreFunksjoner"></Button>
+                <Button x:Name="TestOppdatereButton" Content="Test av oppdatere" Margin="0,5,5,5" Grid.Row="4" Grid.Column="2" Click="TestOppdatereFunksjoner"></Button>
+                <Button x:Name="TestSletteButton" Content="Test av slette" Margin="0,5,5,5" Grid.Row="4" Grid.Column="3" Click="TestSletteFunksjoner"></Button>
+                <Button x:Name="OppdatereLister" Content="Oppdatere Lister" Margin="0,5,5,5" Grid.Row="4" Grid.Column="4" Click="RefreshLister"></Button>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
